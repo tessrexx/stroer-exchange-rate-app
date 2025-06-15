@@ -1,7 +1,8 @@
 package com.tess.exchangerateapp.controllers;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.http.ResponseEntity;
+import org.springframework.http.HttpStatus;
 import com.tess.exchangerateapp.services.MetricsService;
 import java.util.Map;
 
@@ -30,5 +31,22 @@ public class MetricsController {
     @GetMapping("/metrics")
     public Map<String, Object> getMetrics() {
         return metricsService.getMetrics();
+    }
+
+    /**
+     * Handles unexpected errors in the metrics service.
+     * Returns a 500 Internal Server Error status with a descriptive error message.
+     * This is a catch-all handler for any unhandled exceptions that might occur
+     * during metrics retrieval.
+     *
+     * @param exception The exception that occurred during metrics retrieval
+     * @return ResponseEntity with 500 status and error details
+     *         Example: {"error": "Failed to retrieve metrics: Unexpected error in
+     *         metrics service"}
+     */
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<Map<String, String>> handleException(Exception exception) {
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                .body(Map.of("error", "Failed to retrieve metrics: " + exception.getMessage()));
     }
 }
