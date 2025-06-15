@@ -32,7 +32,7 @@ All 9 tests pass successfully via mvn test.
 
 #### 💡 Improvements & Next Steps
 * User Interface: I'd love to build a lightweight frontend to make querying currencies and viewing metrics more user-friendly.
-* Move away from @MockBean: I trialled other solutions but I couldn't quite get them to a working state, so I reverted to using MockBean. In the future, with a little more time and knowledge, it would be worth exploring other alternatives.
+* Move away from @MockBean: I trialled other solutions but I couldn't quite get them to a working state, so I reverted to using MockBean. In the future, with a little more time and knowledge, it would be worth exploring other alternatives that aren't deprecated.
 
 The following is the original task outline. Please let me know if you have any further questions! 🚀
 
